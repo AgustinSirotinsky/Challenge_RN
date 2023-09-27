@@ -20,15 +20,13 @@ const delay = ms => new Promise(
 const [platos, setPlatos] = useState([])
 const getComida = async () => {
     try {
-    const response = await fetch('https://api.spoonacular.com/food/menuItems/32486?apiKey=389b8091e46e4627aba19a5007f6ad34');
+    const response = await fetch('https://api.spoonacular.com/food/menuItems/search?apiKey=389b8091e46e4627aba19a5007f6ad34&query=sushi');
     const json =await response.json();
-        setPlatos(json)
-      // console.log(platos)
+        setPlatos(json.menuItems)
+        console.log(platos)
     }
     catch (error) {
     console.error(error);
-    }
-    finally {
     }
 }
 
@@ -38,17 +36,17 @@ useEffect(() => {
 
 return (
     <View style={styles.container}>
-    {console.log(platos)}
-    <Card style={{ width: '15rem' }}>
-    <Card.Img variant="top" src={platos.image} />
-    <Card.Body>
-        <Card.Title>{platos.title}</Card.Title>
-        <Card.Text>
-        {platos.generatedText}
-        </Card.Text>
-        <Button variant="primary">Read More</Button>
-    </Card.Body>
-    </Card>
+    {platos.map((platos) => (
+        <Link to={`/information/${platos.id}`} style={{ color: '#000000' }}>
+        <Card key={platos.id} style={{ width: '45%' }}>
+        <Card.Img variant="top" src={platos.image} />
+        <Card.Body>
+            <Card.Title>{platos.title}</Card.Title>
+            <Card.Text>{platos.generatedText}</Card.Text>
+        </Card.Body>
+        </Card>
+        </Link>
+    ))}
     </View>
 );
 }
