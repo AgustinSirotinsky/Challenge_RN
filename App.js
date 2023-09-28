@@ -10,7 +10,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
           <Route index element={<Home />}></Route>
-          <Route path="/information/:id" component={Information} />
+          <Route path="/information/:platoid" element={<Information />}></Route>
       </Routes>
     </BrowserRouter>
   )}
