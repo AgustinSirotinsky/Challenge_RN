@@ -9,23 +9,23 @@ import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 
 export default function Layout() {
-  const [search, setSearch] = useState("");
+const [search, setSearch] = useState("");
 
-  const handleSearchChange = (e) => {
+const handleSearchChange = (e) => {
     setSearch(e.target.value);
     console.log(search);
-  };
+};
 
-  return (
+return (
     <React.Fragment>
-      <Navbar className="bg-body-tertiary" fixed="top">
+    <Navbar className="bg-body-tertiary" fixed="top">
         <Navbar.Brand>
-          <Form.Control type="search" placeholder="Search" onChange={handleSearchChange} />
+        <Form.Control type="search" placeholder="Search" onChange={handleSearchChange} />
         </Navbar.Brand>
-      </Navbar>
-      <Container fluid style={{ marginTop: "56px" }}>
+    </Navbar>
+    <Container fluid style={{ marginTop: "56px" }}>
         <Outlet />
-      </Container>
+    </Container>
     </React.Fragment>
-  );
+);
 }
