@@ -37,15 +37,18 @@ useEffect(() => {
 return (
     <View style={styles.container}>
     {platos.map((platos) => (
+    <div key={platos.id} style={{ marginBottom: 20 }}>
         <Link to={`/information/${platos.id}`} style={{ color: '#000000' }}>
-        <Card key={platos.id} style={{ width: '45%' }}>
-        <Card.Img variant="top" src={platos.image} />
-        <Card.Body>
+        <Card style={{ width: '100%' }}>
+            <Card.Img variant="top" src={platos.image} />
+            <Card.Body>
             <Card.Title>{platos.title}</Card.Title>
             <Card.Text>{platos.generatedText}</Card.Text>
-        </Card.Body>
+            </Card.Body>
         </Card>
         </Link>
+        <Button variant="danger" onClick={() => handleDelete(platos.id)}>Delete</Button>
+    </div>
     ))}
     </View>
 );
